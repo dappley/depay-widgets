@@ -40,6 +40,7 @@ export default function(style){
       padding: 1rem;
       text-align: center;
     }
+
     .PaymentColumnNFT{
       height: 100%;
       width:100%;

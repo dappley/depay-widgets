@@ -1,10 +1,11 @@
 import CloseDialogComponent from '../components/CloseDialogComponent';
 import DisplayTokenAmount from '../utils/DisplayTokenAmount';
+import ERC20PaymentRowComponent from '../components/ERC20PaymentRowComponent';
 import GoBackDialogComponent from '../components/GoBackDialogComponent';
 import LocalCurrency from '../utils/LocalCurrency';
 import NavigateStackContext from '../contexts/NavigateStackContext';
+import NFTPaymentRowComponent from '../components/NFTPaymentRowComponent';
 import React from 'react';
-import TokenIconComponent from '../components/TokenIconComponent';
 
 class ChangePaymentTokenDialog extends React.Component {
 
@@ -68,39 +69,26 @@ class ChangePaymentTokenDialog extends React.Component {
                 return(
                   <div className='Payment' key={index}>
 
-                    <div className='PaymentRow ChangePaymentRow' onClick={ ()=> this.selectNewRoute(index, navigate) }>
                     {route.nft
-                      ?<div className='PaymentColumn PaymentColumnNFT'>
-                        <TokenIconComponent
-                          title={ route.token.name }
-                          src={ route.token.logoURI }
-                        />
-                      </div>
-                      :<div className='PaymentColumn PaymentColumn1'>
-                        <TokenIconComponent
-                          title={ route.token.name }
-                          src={ route.token.logoURI }
-                        />
-                      </div>
+                      ?<NFTPaymentRowComponent
+                        selectNewRoute={this.selectNewRoute}
+                        renderThirdRow={this.renderThirdRow}
+                        route={route}
+                        routes={this.props.routes}
+                        displayedTokenAmount={displayedTokenAmount}
+                        totalDisplayed={totalDisplayed}
+                        index={index}
+                      />
+                      :<ERC20PaymentRowComponent
+                        selectNewRoute={this.selectNewRoute}
+                        renderThirdRow={this.renderThirdRow}
+                        route={route}
+                        routes={this.props.routes}
+                        displayedTokenAmount={displayedTokenAmount}
+                        totalDisplayed={totalDisplayed}
+                        index={index}
+                      />
                     }
-                      <div className='PaymentColumn PaymentColumn2'>
-                        <div className='PaymentDescription TextEllipsis'>
-                          { route.token.name }
-                        </div>
-                        <div className='PaymentAmountRow1 TextEllipsis'>
-                          { displayedTokenAmount }
-                        </div>
-                        <div className='PaymentAmountRow2 TextEllipsis'>
-                          { totalDisplayed }
-                        </div>
-                        { this.renderThirdRow(route, index, this.props.routes) }
-                      </div>
-                      <div className='PaymentColumn PaymentColumn3'>
-                        <span className='PaymentAction' title='Select for payment'>
-                          Select
-                        </span>
-                      </div>
-                    </div>
 
                   </div>
                 )
