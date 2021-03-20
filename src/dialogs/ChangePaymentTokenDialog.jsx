@@ -70,13 +70,13 @@ class ChangePaymentTokenDialog extends React.Component {
 
                     <div className='PaymentRow ChangePaymentRow' onClick={ ()=> this.selectNewRoute(index, navigate) }>
                     {route.nft
-                      ?<div className='PaymentColumn PaymentColumn1'>
+                      ?<div className='PaymentColumn PaymentColumnNFT'>
                         <TokenIconComponent
                           title={ route.token.name }
                           src={ route.token.logoURI }
                         />
                       </div>
-                      :<div className='PaymentColumn PaymentColumnNFT'>
+                      :<div className='PaymentColumn PaymentColumn1'>
                         <TokenIconComponent
                           title={ route.token.name }
                           src={ route.token.logoURI }
