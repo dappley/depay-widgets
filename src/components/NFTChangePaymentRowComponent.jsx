@@ -1,17 +1,21 @@
+import DisplayTokenAmount from '../utils/DisplayTokenAmount';
 import React from 'react';
 import TokenIconComponent from '../components/TokenIconComponent';
 
-class NFTPaymentRowComponent extends React.Component {
+class NFTChangePaymentRowComponent extends React.Component {
   
   render() {
+    const displayedTokenAmount = DisplayTokenAmount(this.props.route.amounts[1], 18, 'WETH');
+    const totalDisplayed = DisplayTokenAmount(this.props.route.amounts[1], 18, 'WETH');
+
     return(
-      <div className='PaymentRow ChangePaymentRow' onClick={ ()=> this.props.navigateIfActionable(this.props.navigate, 'ChangePaymentToken', this.props.dialogContext) }>
+      <div className='PaymentRow NFTPaymentRow ChangePaymentRow' onClick={ ()=> this.props.selectNewRoute(this.props.index, this.props.navigate) }>
         <div className='NFTPaymentHeader'>
           <div className='PaymentColumn PaymentColumn1'>
           </div>
           <div className='PaymentColumn PaymentColumn2'>
-            <div className='PaymentDescription'>
-              Payment
+            <div className='PaymentDescription TextEllipsis'>
+              { this.props.route.token.name }
             </div>
           </div>
           <div className='PaymentColumn PaymentColumn3'>
@@ -26,14 +30,14 @@ class NFTPaymentRowComponent extends React.Component {
           </div>
           <div className='PaymentColumn PaymentColumn2'>
             <TokenIconComponent
-              title={ this.props.selected.token.name }
-              src={ this.props.selected.token.logoURI }
+              title={ this.props.route.token.name }
+              src={ this.props.route.token.logoURI }
               className='NFTImage'
             />
           </div>
           <div className='PaymentColumn PaymentColumn3'>
-            <span className='PaymentAction' title='Change payment'>
-              Change
+            <span className='PaymentAction' title='Select for payment'>
+              Select
             </span>
           </div>
         </div>
@@ -42,11 +46,12 @@ class NFTPaymentRowComponent extends React.Component {
           </div>
           <div className='PaymentColumn PaymentColumn2'>
             <div className='PaymentAmountRow1 TextEllipsis'>
-              { this.props.paymentContext.token }
+              { displayedTokenAmount }
             </div>
             <div className='PaymentAmountRow2 TextEllipsis'>
-              { this.props.paymentContext.local }
+              { totalDisplayed }
             </div>
+            { this.props.renderThirdRow(this.props.route, this.props.index, this.props.routes) }
           </div>
           <div className='PaymentColumn PaymentColumn3'>
           </div>
@@ -56,4 +61,4 @@ class NFTPaymentRowComponent extends React.Component {
   }
 }
 
-export default NFTPaymentRowComponent;
+export default NFTChangePaymentRowComponent;

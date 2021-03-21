@@ -5,10 +5,12 @@ import DePayRouterV1Contract from '../contracts/DePayRouterV1Contract';
 import DialogContext from '../contexts/DialogContext';
 import DisplayTokenAmount from '../utils/DisplayTokenAmount';
 import Erc20Abi from '../abi/Erc20Abi';
+import ERC20PaymentRowComponent from '../components/ERC20PaymentRowComponent';
 import EthersProvider from '../utils/EthersProvider';
 import Exchanges from '../utils/Exchanges';
 import GasContext from '../contexts/GasContext';
 import NavigateStackContext from '../contexts/NavigateStackContext';
+import NFTPaymentRowComponent from '../components/NFTPaymentRowComponent';
 import NotEnoughFundsDialog from '../dialogs/NotEnoughFundsDialog';
 import PaymentDialogSkeleton from '../dialogs/PaymentDialogSkeleton';
 import QuestionMarkCircleComponent from '../components/QuestionMarkCircleComponent';
@@ -216,30 +218,22 @@ class PaymentDialog extends React.Component {
                 </div>
                 <div className='DialogBody HeightAuto'>
                   <div className='Payment' key={ this.props.selected.token.address }>
-                    <div className='PaymentRow ChangePaymentRow' onClick={ ()=> this.navigateIfActionable(navigate, 'ChangePaymentToken', dialogContext) }>
-                      <div className='PaymentColumn PaymentColumn1'>
-                        <TokenIconComponent
-                          title={ this.props.selected.token.name }
-                          src={ this.props.selected.token.logoURI }
-                        />
-                      </div>
-                      <div className='PaymentColumn PaymentColumn2'>
-                        <div className='PaymentDescription'>
-                          Payment
-                        </div>
-                        <div className='PaymentAmountRow1 TextEllipsis'>
-                          { this.props.paymentContext.token }
-                        </div>
-                        <div className='PaymentAmountRow2 TextEllipsis'>
-                          { this.props.paymentContext.local }
-                        </div>
-                      </div>
-                      <div className='PaymentColumn PaymentColumn3'>
-                        <span className='PaymentAction' title='Change payment'>
-                          Change
-                        </span>
-                      </div>
-                    </div>
+                    {this.props.selected.nft
+                      ?<NFTPaymentRowComponent
+                        navigateIfActionable={this.navigateIfActionable.bind(this)}
+                        navigate={navigate}
+                        dialogContext={dialogContext}
+                        selected={this.props.selected}
+                        paymentContext={this.props.paymentContext}
+                      />
+                      :<ERC20PaymentRowComponent
+                        navigateIfActionable={this.navigateIfActionable.bind(this)}
+                        navigate={navigate}
+                        dialogContext={dialogContext}
+                        selected={this.props.selected}
+                        paymentContext={this.props.paymentContext}
+                      />
+                    }
                   </div>
                 </div>
                 <div className='DialogFooter'>

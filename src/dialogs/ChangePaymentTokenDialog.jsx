@@ -1,10 +1,10 @@
 import CloseDialogComponent from '../components/CloseDialogComponent';
 import DisplayTokenAmount from '../utils/DisplayTokenAmount';
-import ERC20PaymentRowComponent from '../components/ERC20PaymentRowComponent';
+import ERC20ChangePaymentRowComponent from '../components/ERC20ChangePaymentRowComponent';
 import GoBackDialogComponent from '../components/GoBackDialogComponent';
 import LocalCurrency from '../utils/LocalCurrency';
 import NavigateStackContext from '../contexts/NavigateStackContext';
-import NFTPaymentRowComponent from '../components/NFTPaymentRowComponent';
+import NFTChangePaymentRowComponent from '../components/NFTChangePaymentRowComponent';
 import React from 'react';
 
 class ChangePaymentTokenDialog extends React.Component {
@@ -67,16 +67,16 @@ class ChangePaymentTokenDialog extends React.Component {
                   <div className='Payment' key={index}>
 
                     {route.nft
-                      ?<NFTPaymentRowComponent
-                        selectNewRoute={this.selectNewRoute}
+                      ?<NFTChangePaymentRowComponent
+                        selectNewRoute={this.selectNewRoute.bind(this)}
                         renderThirdRow={this.renderThirdRow}
                         route={route}
                         navigate={navigate}
                         routes={this.props.routes}
                         index={index}
                       />
-                      :<ERC20PaymentRowComponent
-                        selectNewRoute={this.selectNewRoute}
+                      :<ERC20ChangePaymentRowComponent
+                        selectNewRoute={this.selectNewRoute.bind(this)}
                         renderThirdRow={this.renderThirdRow}
                         route={route}
                         navigate={navigate}

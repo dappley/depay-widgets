@@ -44,7 +44,7 @@ class RoutesProvider extends React.Component {
       .then(this.sortRoutes.bind(this))
       .then(this.addMaxAmounts.bind(this))
       .then(function(routes){
-        console.log(routes);
+        console.log(".then(function(routes){", routes);
         this.setState({selected: routes[0]}, function(){
           // set selected first to prevent flickering "Not enough funds"
           this.setState({
@@ -74,12 +74,7 @@ class RoutesProvider extends React.Component {
           return Promise.resolve(route);
         } else {
           if(route.nft) {
-            return new ethers.Contract(route.token.address, Erc1155Abi, EthersProvider)
-            .isApprovedForAll(this.props.wallet.address(), DePayRouterV1Contract.address)
-            .then(function(approved){
-              route.approved = approved;
-              return route;
-            });
+            return Promise.resolve(route);
           } else {
             return new ethers.Contract(route.token.address, Erc20Abi, EthersProvider)
             .allowance(this.props.wallet.address(), DePayRouterV1Contract.address)
