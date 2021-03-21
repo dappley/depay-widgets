@@ -63,9 +63,6 @@ class ChangePaymentTokenDialog extends React.Component {
             <div className='DialogBody'>
               {this.props.routes.map((route, index) => {
 
-                const totalDisplayed = DisplayTokenAmount(route.balance, route.token.decimals, route.token.symbol)
-                const displayedTokenAmount = DisplayTokenAmount(route.amounts[0], route.token.decimals, route.token.symbol)
-
                 return(
                   <div className='Payment' key={index}>
 
@@ -74,18 +71,16 @@ class ChangePaymentTokenDialog extends React.Component {
                         selectNewRoute={this.selectNewRoute}
                         renderThirdRow={this.renderThirdRow}
                         route={route}
+                        navigate={navigate}
                         routes={this.props.routes}
-                        displayedTokenAmount={displayedTokenAmount}
-                        totalDisplayed={totalDisplayed}
                         index={index}
                       />
                       :<ERC20PaymentRowComponent
                         selectNewRoute={this.selectNewRoute}
                         renderThirdRow={this.renderThirdRow}
                         route={route}
+                        navigate={navigate}
                         routes={this.props.routes}
-                        displayedTokenAmount={displayedTokenAmount}
-                        totalDisplayed={totalDisplayed}
                         index={index}
                       />
                     }

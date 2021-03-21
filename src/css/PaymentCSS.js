@@ -6,6 +6,45 @@ export default function(style){
       table-layout: fixed;
     }
 
+    .NFTPaymentRow {
+      display: block;
+    }
+
+    .NFTPaymentHeader, .NFTPaymentBody, .NFTPaymentFooter {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    
+    .NFTPaymentHeader .PaymentColumn, .NFTPaymentBody .PaymentColumn {
+      border: none;
+    }
+
+    .NFTPaymentHeader .PaymentColumn {
+      padding-top: 1.4rem;
+      padding-bottom: 0.4rem;
+    }
+
+    .NFTPaymentBody .PaymentColumn {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .NFTPaymentFooter .PaymentColumn {
+      padding-top: 0.4rem;
+      padding-bottom: 1.6rem;
+    }
+
+    .NFTImage {
+      border-radius: 1rem;
+      height: 9rem;
+      width: auto;
+    }
+    
+    .NFTPaymentBody .PaymentColumn2 {
+      text-align: left;
+    }
+
     .PaymentRow {
       display: table-row;
     }
