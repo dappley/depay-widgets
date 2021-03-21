@@ -28,7 +28,7 @@ class OpenSeaExchange {
       if(completeRoute.nft){
         fetch(`https://api.opensea.io/wyvern/v1/orders?bundled=false&include_bundled=false&include_invalid=false&limit=5&offset=0&order_by=base_price&order_direction=desc&asset_contract_address=`+completeRoute.token.address+`&token_id=`+completeRoute.token.id).then(function(response){
           response.json().then(function(data) {
-            if(data.count < 0) {
+            if(data.count <= 0) {
               resolve(null);
             } else {
               resolve([
