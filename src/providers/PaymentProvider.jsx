@@ -24,7 +24,11 @@ class PaymentProvider extends React.Component {
   }
 
   token() {
-    return DisplayTokenAmount(this.props.route.amounts[0], this.props.route.token.decimals, this.props.route.token.symbol);
+    if(this.props.route.nft) {
+      return DisplayTokenAmount(this.props.route.amounts[1], this.props.route.token.decimals, 'WETH');
+    } else {
+      return DisplayTokenAmount(this.props.route.amounts[0], this.props.route.token.decimals, this.props.route.token.symbol);
+    }
   }
 
   feeInETH() {
