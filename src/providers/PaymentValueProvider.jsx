@@ -27,17 +27,17 @@ export default (props)=>{
       route({
         blockchain: payment.route.blockchain,
         tokenIn: payment.route.fromToken.address,
-        tokenOut: CONSTANTS[payment.route.blockchain].USD,
+        tokenOut: CONSTANTS[payment.route.blockchain].NATIVE,
         amountIn: payment.route.fromAmount,
         fromAddress: account,
         toAddress: account
       }),
-      (new Token({ blockchain: payment.route.blockchain, address: CONSTANTS[payment.route.blockchain].USD })).decimals()
+      (new Token({ blockchain: payment.route.blockchain, address: CONSTANTS[payment.route.blockchain].NATIVE })).decimals()
     ]).then(([USDExchangeRoutes, USDDecimals])=>{
       let USDRoute = USDExchangeRoutes[0]
 
       let USDAmount
-      if(payment.route.fromToken.address.toLowerCase() == CONSTANTS[payment.route.blockchain].USD.toLowerCase()) {
+      if(payment.route.fromToken.address.toLowerCase() == CONSTANTS[payment.route.blockchain].NATIVE.toLowerCase()) {
         USDAmount = payment.route.fromAmount.toString()
       } else if (USDRoute == undefined) {
         setPaymentValue('')

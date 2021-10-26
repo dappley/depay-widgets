@@ -82,6 +82,9 @@
           var button = document.getElementById("payButton");
           button.addEventListener("click",function(e){
             DePayWidgets.Payment({
+              providers: {
+                ethereum: ['https://ropsten.infura.io/v3/bbc62f3988084381ba765cd5ea15b288'],
+              },
               accept: [{
                 blockchain: document.getElementById("paymentBlockchainInput").value,
                 amount: parseFloat(document.getElementById("paymentAmountInput").value),
