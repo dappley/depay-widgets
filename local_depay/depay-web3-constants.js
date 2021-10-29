@@ -14,7 +14,7 @@
       SYMBOL: 'ETH',
       CURRENCY: 'Ether',
       NAME: 'Ethereum',
-      USD: '0x6B175474E89094C44Da98b954EedeAC495271d0F'
+      USD: '0x4f96fe3b7a6cf9725f59d353f723c1bdb64ca6aa'
     };
   
     let CONSTANTS$1 = {
