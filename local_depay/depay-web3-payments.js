@@ -53,10 +53,10 @@
     var plugins = {
       ethereum: {
         payment: {
-          address: '0x7C9cfd8905E8351303b0bE5D8378b3D453532c44'
+          address: '0xeE144945d452f8b274759143340A7739D57d18E5'
         },
         uniswap_v2: {
-          address: '0xc1F6146f45b6EC65FA9E8c8E278bb01879b32268',
+          address: '0x5D5265b1C4077994F560cFf1d69E3c8e8C93bBec',
           prepareTransaction: prepareUniswapTransaction
         },
         paymentWithEvent: {
@@ -99,7 +99,7 @@
   
     var routers = {
       ethereum: {
-        address: '0x82154ea9c2dc4c06d6719ce08728f5cfc9422b1d',
+        address: '0x56f550559b5491C1920e88aA13ddaaB25C854FF2',
         api: [{"inputs":[{"internalType":"address","name":"_configuration","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"ETH","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"configuration","outputs":[{"internalType":"contract DePayRouterV1Configuration","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"pluginAddress","type":"address"}],"name":"isApproved","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"path","type":"address[]"},{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"address[]","name":"addresses","type":"address[]"},{"internalType":"address[]","name":"plugins","type":"address[]"},{"internalType":"string[]","name":"data","type":"string[]"}],"name":"route","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"withdraw","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}]
       },
       bsc: {
