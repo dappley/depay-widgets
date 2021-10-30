@@ -17866,6 +17866,9 @@
 
 	const sendTransaction$1 = async ({ transaction, wallet })=> {
 	  transaction = new Transaction(transaction);
+	  if((await wallet.connectedTo(transaction.blockchain)) == false) {
+	    await wallet.switchTo(transaction.blockchain);
+	  }
 	  await transaction.prepare({ wallet });
 	  let provider = new Web3Provider(window.ethereum, 'any');
 	  let signer = provider.getSigner(0);
@@ -18232,6 +18235,7 @@
 	  }
 
 	  async connectedTo(input) {
+		console.log("connectedTo2")
 	    let chainId = await this.connector.sendCustomRequest({ method: 'eth_chainId' });
 	    const blockchain = depayWeb3Blockchains.Blockchain.findById(chainId);
 	    if(input) {
